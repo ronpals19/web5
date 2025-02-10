@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Changing Car</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .car-container {
+      text-align: center;
+    }
+    #car-image {
+      width: 673px;
+      height: 405px;
+      object-fit: contain;
+      object-position: bottom;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .color-picker {
+      margin-top: 5px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .color-button {
+      width: 25px;
+      height: 25px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .color-button:hover {
+      transform: scale(1.1);
+    }
+    .color-button.active {
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div class="car-container">
+    <img id="car-image" src="quartz-blue.webp" alt="Car Color Preview" />
+
+    <div class="color-picker">
+      <button class="color-button" style="background: #56859e" onclick="changeColor('quartz-blue.webp', this)" title="Quartz Blue"></button>
+      <button class="color-button" style="background: #808080" onclick="changeColor('harbour-grey.webp', this)" title="Harbour Grey"></button>
+      <button class="color-button" style="background: #000000" onclick="changeColor('cosmos-black.webp', this)" title="Cosmos Black"></button>
+      <button class="color-button" style="background: #ffffff; border: 1px solid #ccc;" onclick="changeColor('crystal-white.webp', this)" title="Crystal White"></button>
+    </div>
+  </div>
+
+  <script>
+    function changeColor(imageName, button) {
+      const carImage = document.getElementById('car-image');
+      const buttons = document.querySelectorAll('.color-button');
+
+      carImage.style.opacity = 0;
+      setTimeout(() => {
+        carImage.src = imageName + "?t=" + new Date().getTime(); 
+        carImage.style.opacity = 1;
+      }, 200);
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    }
+  </script>
+</body>
+</html>
