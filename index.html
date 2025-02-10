@@ -26,14 +26,15 @@
       text-align: center;
     }
     #car-image {
-      width: 673px;
-      height: 405px;
+      width: 90%; /* Decrease the car size slightly */
+      height: auto; /* Maintain aspect ratio */
+      max-width: 600px; /* Ensure it does not exceed this width */
       object-fit: contain;
       object-position: bottom;
       transition: opacity 0.3s ease-in-out;
     }
     .color-picker {
-      margin-top: 5px;
+      margin-top: 3px; /* Reduced space between the car and color picker */
       display: flex;
       justify-content: center;
       gap: 8px;
